@@ -101,15 +101,15 @@ components:
       type: object
       required:
         - id
-        # - name
+        - name
         - price
       properties:
         id:
           type: string
         type:
           type: string
-        # name:
-        #   type: string
+        name:
+          type: string
         version:
           type: string
         price:
