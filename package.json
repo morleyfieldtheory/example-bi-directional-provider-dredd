@@ -13,16 +13,16 @@
     "deploy": "pact-broker record-deployment --pacticipant pactflow-example-bi-directional-provider-dredd --version \"$(npx -y absolute-version)\" --environment production"
   },
   "dependencies": {
-    "cors": "^2.8.5",
-    "express": "^4.17.1"
+    "cors": "*",
+    "express": "*"
   },
   "devDependencies": {
-    "@pact-foundation/pact-core": "^13.7.1",
-    "axios": "^0.21.1",
-    "concurrently": "^7.1.0",
-    "dotenv": "^8.2.0",
-    "dredd": "^14.1.0",
-    "eslint": "^6.8.0"
+    "@pact-foundation/pact-core": "*",
+    "axios": "*",
+    "concurrently": "*",
+    "dotenv": "*",
+    "dredd": "*",
+    "eslint": "*"
   },
   "license": "ISC"
 }
