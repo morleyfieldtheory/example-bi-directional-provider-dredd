@@ -1,6 +1,6 @@
 {
   "name": "product-service",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "Collaborative contracts example, using Dredd and OAS to validate the provider API",
   "main": "server.js",
   "scripts": {
