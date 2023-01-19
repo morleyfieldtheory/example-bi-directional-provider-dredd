@@ -7,5 +7,5 @@ class Product {
         this.price = price;
     }
 }
-
+// meaningless comment
 module.exports = Product;
