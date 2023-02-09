@@ -227,10 +227,13 @@ components:
           type: number
     Lot_Summary:
       type: object
-      required:
-        - parent
-        - lot
       properties:
         lot_summary:
           type: object
+          properties:
+            lot:
+              type: object
+            parent:
+              type: object
+
 
