@@ -4,7 +4,7 @@ info:
   description: Pactflow Product API demo
   version: 1.0.0
 paths:
-  /products:
+  /products/products:
     post:
       summary: Create a product
       description: Creates a new product
@@ -60,7 +60,7 @@ paths:
         "400":
           description: Invalid ID supplied
           content: {}
-  /product/{id}:
+  /products/product/{id}:
     get:
       summary: Find product by ID
       description: Returns a single product
@@ -95,6 +95,117 @@ paths:
         "404":
           description: Product not found
           content: {}
+  /lotDetails/display_lot_summary:
+    get:
+      summary: Get lot summary by ID
+      description: Returns a single lot summary
+      operationId: display_lot_summary
+      parameters:
+      - name: mft_key
+        in: query
+        description: key of object type to summarize
+        schema:
+          type: string
+        required: true
+        example: "Protein Lot Num"
+      - name: value
+        in: query
+        description: key of object type to summarize
+        schema:
+          type: string
+        required: true
+        example: "MFT-000123-001"
+      responses:
+        "200":
+          description: successful operation
+          content:
+            "application/json; charset=utf-8":
+              schema:
+                $ref: '#/components/schemas/Lot_Summary'
+              examples:
+                application/json:
+                  value:
+                    lot_summary:
+                      parent:
+                        parent_name:
+                          key: Protein Name
+                          value: insulin
+                          type: string
+                          template_loc:
+                            down: 1
+                            right: 0
+                            value: right
+                        parent_corp_name:
+                          key: Protein Num
+                          value: MFT-000123
+                          type: string
+                          template_loc:
+                            down: 2
+                            right: 0
+                            value: right
+                      lot:
+                        corp_name:
+                          key: Protein Lot Num
+                          value: MFT-000123-001
+                          type: string
+                          template_loc:
+                            down: 3
+                            right: 0
+                            value: right
+                        lot_produced_date:
+                          key: Production Date
+                          value: '2022 Mar 03 05:12 PDT'
+                          type: date
+                          template_loc:
+                            down: 4
+                            right: 0
+                            value: right
+                        lot_produced_by:
+                          key: Produced By
+                          value: john.mcneil
+                          type: string
+                          template_loc:
+                            down: 5
+                            right: 1
+                            value: right
+                        lot_purified_date:
+                          key: Purification Date
+                          value: '2022 Mar 07 09:00 PDT'
+                          type: date
+                          template_loc:
+                            down: 6
+                            right: 0
+                            value: right
+                        lot_purity:
+                          key: Purity (%)
+                          value: '92'
+                          type: percent
+                          template_loc:
+                            down: 7
+                            right: 1
+                            value: right
+                        lot_amount_produced:
+                          key: Amount Produced (mg)
+                          value: '22'
+                          type: number
+                          template_loc:
+                            down: 8
+                            right: 1
+                            value: right
+                        lot_eln_record:
+                          key: ELN Record
+                          value: '[Lot MFT-000123-001 Production Production](http://eln.com/eln12355)'
+                          type: url
+                          template_loc:
+                            down: 9
+                            right: 0
+                            value: right
+        "400":
+          description: Invalid ID supplied
+          content: {}
+        "404":
+          description: Product not found
+          content: {}
 components:
   schemas:
     Product:
@@ -114,3 +225,12 @@ components:
           type: string
         price:
           type: number
+    Lot_Summary:
+      type: object
+      required:
+        - parent
+        - lot
+      properties:
+        lot_summary:
+          type: object
+
