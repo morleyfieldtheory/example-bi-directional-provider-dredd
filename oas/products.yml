@@ -225,6 +225,37 @@ components:
           type: string
         price:
           type: number
+    template_loc:
+      type: object
+      properties:
+        down: 
+          type: number
+        right:
+          type: number
+        value:
+          type: string
+    stringRecord:
+      type: object
+      properties:
+        key:
+          type: string
+        value:
+          type: string
+        type:
+          type: string
+        template_loc:
+          $ref: '#/components/schemas/template_loc'
+    numberRecord:
+      type: object
+      properties:
+        key:
+          type: string
+        value:
+          type: number
+        type:
+          type: string
+        template_loc:
+          $ref: '#/components/schemas/template_loc'
     Lot_Summary:
       type: object
       properties:
@@ -233,7 +264,28 @@ components:
           properties:
             lot:
               type: object
+              properties:
+                corp_name:
+                  $ref: '#/components/schemas/stringRecord'
+                lot_produced_date:
+                  $ref: '#/components/schemas/stringRecord'
+                lot_produced_by:
+                  $ref: '#/components/schemas/stringRecord'
+                lot_purified_date:
+                  $ref: '#/components/schemas/stringRecord'
+                lot_purity:
+                  $ref: '#/components/schemas/numberRecord'
+                lot_amount_produced:
+                  $ref: '#/components/schemas/numberRecord'
+                lot_eln_record:
+                  $ref: '#/components/schemas/stringRecord'
             parent:
               type: object
+              properties:
+                parent_name:
+                  $ref: '#/components/schemas/stringRecord'
+                parent_corp_name:
+                  $ref: '#/components/schemas/stringRecord'
+
 
 
